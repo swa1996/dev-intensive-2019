@@ -1,7 +1,7 @@
 package ru.skillbranch.devintensive.utils
 
 object Utils {
-    fun parseFullName(fullName: String?): Pair<String?, String?>{
+    fun parseFullName(fullName: String?): Pair<String?, String?> {
         val parts: List<String>? = fullName?.split(" ")
         when {
             parts.isNullOrEmpty() || parts.get(0).isEmpty() -> return null to null
@@ -12,10 +12,11 @@ object Utils {
             }
         }
     }
-    fun toInitials(firstName: String?, lastName: String?): String?{
-        var res = "${if(!firstName.isNullOrEmpty()) "${firstName.first().toUpperCase()}" else ""}"
-         res += "${ if (!lastName.isNullOrEmpty())"${lastName.first().toUpperCase()}" else ""}"
-        if(res.isNullOrBlank())return null
+
+    fun toInitials(firstName: String?, lastName: String?): String? {
+        var res = "${if (!firstName.isNullOrEmpty()) "${firstName.first().toUpperCase()}" else ""}"
+        res += "${if (!lastName.isNullOrEmpty()) "${lastName.first().toUpperCase()}" else ""}"
+        if (res.isNullOrBlank()) return null
         else return res
     }
 
