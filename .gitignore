@@ -24,6 +24,7 @@ app/src/androidTest/
 
 # User-specific configurations
 .idea/
+.idea/libraries/
 *.iml
 
 # OS-specific files
