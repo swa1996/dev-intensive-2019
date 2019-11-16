@@ -7,4 +7,4 @@ fun String.truncate(count: Int = 16): String {
 }
 
 fun String.stripHtml(): String =
-    "\\s{2,}".toRegex().replace("<\\S*\\s*\\S*>".toRegex().replace(this, ""), " ")
+    "\\s{2,}".toRegex().replace("(<.*?>)".toRegex().replace(this, ""), " ")

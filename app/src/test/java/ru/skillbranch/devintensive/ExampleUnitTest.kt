@@ -37,6 +37,7 @@ class ExampleUnitTest {
         println(TimeUnits.SECOND.plural(2))
         println(TimeUnits.SECOND.plural(11))
         println(TimeUnits.MINUTE.plural(21))
+        println(TimeUnits.HOUR.plural(21))
         println(TimeUnits.MINUTE.plural(22))
         println(TimeUnits.MINUTE.plural(30))
         println(TimeUnits.HOUR.plural(1))
