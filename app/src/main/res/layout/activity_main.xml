@@ -37,8 +37,8 @@
                 android:layout_height="wrap_content"
                 android:lines="1"
                 android:hint="Введите текст"
-                android:textColor="@color/gray_light"
-                android:textColorHint="@color/gray_light"
+            android:textColor="@color/color_gray_light"
+            android:textColorHint="@color/color_gray_light"
                 android:paddingBottom="@dimen/spacing_normal_16"
                 android:paddingTop="@dimen/spacing_normal_16"
                 android:layout_marginLeft="@dimen/spacing_normal_16"
@@ -50,7 +50,9 @@
                 android:layout_width="@dimen/image_button_size"
                 android:layout_height="@dimen/image_button_size"
                 android:src="@drawable/ic_send_white_24dp"
-                android:id="@+id/id_send"/>
+            android:id="@+id/id_send"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/spacing_normal_16" />
     </LinearLayout>
 
 
