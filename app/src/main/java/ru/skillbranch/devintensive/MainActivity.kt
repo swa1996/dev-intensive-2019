@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         benderImage = iv_bender
         textTxt = tv_text
         messageEt = et_message
-        sendBtn = id_send
+        sendBtn = iv_send
 
         val status = savedInstanceState?.getString("STATUS") ?: Bender.Status.NORMAL.name
         val question = savedInstanceState?.getString("QUESTION") ?: Bender.Question.NAME.name
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        if (p0?.id == R.id.id_send) {
+        if (p0?.id == R.id.iv_send) {
             val (phrase, color) = benderObj.listenAnswer(messageEt.text.toString().toLowerCase())
             messageEt.setText("")
             val (r, g, b) = color
