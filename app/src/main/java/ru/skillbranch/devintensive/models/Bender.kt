@@ -13,7 +13,9 @@ public class Bender(var status: Status = Status.NORMAL, var question: Question =
         }
 
     fun listenAnswer(answer: String): Pair<String, Triple<Int, Int, Int>> {
-        return if (question.answers.contains(answer)) {
+        val (valid, s) = question.validate(answer)
+        if (!valid) return "$s\n${question.question}" to status.color
+        return if (question.answers.contains(answer.toLowerCase())) {
             question = question.nextQuestion()
             "Отлично - это правильный ответ!\n${question.question}" to status.color
         } else {
@@ -41,23 +43,45 @@ public class Bender(var status: Status = Status.NORMAL, var question: Question =
     enum class Question(val question: String, val answers: List<String>) {
         NAME("Как меня зовут?", listOf("бендер", "bender")) {
             override fun nextQuestion(): Question = PROFESSION
+            override fun validate(s: String): Pair<Boolean, String> = when {
+                "^[A-Z]{1}\\w{1,}".toRegex().matches(s) -> true to ""
+                else -> false to "Имя должно начинаться с заглавной буквы"
+            }
         },
         PROFESSION("Назови мою профессию?", listOf("сгибальщик", "bender")) {
             override fun nextQuestion(): Question = MATERIAL
+            override fun validate(s: String): Pair<Boolean, String> = when {
+                "^[a-z]{1}\\w{1,}".toRegex().matches(s) -> true to ""
+                else -> false to "Профессия должна начинаться со строчной буквы"
+            }
         },
         MATERIAL("Из чего я сделан?", listOf("металл", "дерево", "metal", "iron", "wood")) {
             override fun nextQuestion(): Question = BDAY
+            override fun validate(s: String): Pair<Boolean, String> = when {
+                "\\D{1,}".toRegex().matches(s) -> true to ""
+                else -> false to "Материал не должен содержать цифр"
+            }
         },
         BDAY("Когда меня создали?", listOf("2993")) {
             override fun nextQuestion(): Question = SERIAL
+            override fun validate(s: String): Pair<Boolean, String> = when {
+                "\\d{1,}".toRegex().matches(s) -> true to ""
+                else -> false to "Год моего рождения должен содержать только цифры"
+            }
         },
         SERIAL("Мой серийный номер?", listOf("2716057")) {
             override fun nextQuestion(): Question = IDLE
+            override fun validate(s: String): Pair<Boolean, String> = when {
+                "\\d{7}".toRegex().matches(s) -> true to ""
+                else -> false to "Серийный номер содержит только цифры, и их 7"
+            }
         },
         IDLE("На этом все, вопросов больше нет", listOf()) {
             override fun nextQuestion(): Question = IDLE
+            override fun validate(s: String) = true to ""
         };
 
         abstract fun nextQuestion(): Question
+        abstract fun validate(s: String): Pair<Boolean, String>
     }
 }
