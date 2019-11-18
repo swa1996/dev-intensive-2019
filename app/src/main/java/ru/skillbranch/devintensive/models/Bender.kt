@@ -17,10 +17,13 @@ public class Bender(var status: Status = Status.NORMAL, var question: Question =
         if (!valid) return "$s\n${question.question}" to status.color
         return if (question.answers.contains(answer.toLowerCase())) {
             question = question.nextQuestion()
-            "Отлично - это правильный ответ!\n${question.question}" to status.color
+            "Отлично - ты справился\n${question.question}" to status.color
         } else {
             status = status.nextStatus()
-            "Это неправильный ответ!\n${question.question}" to status.color
+            when {
+                status.equals(Status.CRITICAL) -> "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
+                else -> "Это неправильный ответ\n${question.question}" to status.color
+            }
         }
     }
 
