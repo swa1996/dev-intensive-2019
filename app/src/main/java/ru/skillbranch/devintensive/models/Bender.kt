@@ -19,10 +19,13 @@ public class Bender(var status: Status = Status.NORMAL, var question: Question =
             question = question.nextQuestion()
             "Отлично - ты справился\n${question.question}" to status.color
         } else {
-            status = status.nextStatus()
-            when {
-                status.equals(Status.CRITICAL) -> "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
-                else -> "Это неправильный ответ\n${question.question}" to status.color
+            if (status == Status.CRITICAL) {
+                status = Status.NORMAL
+                question = Question.NAME
+                "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
+            } else {
+                status = status.nextStatus()
+                "Это неправильный ответ\n${question.question}" to status.color
             }
         }
     }
@@ -47,14 +50,14 @@ public class Bender(var status: Status = Status.NORMAL, var question: Question =
         NAME("Как меня зовут?", listOf("бендер", "bender")) {
             override fun nextQuestion(): Question = PROFESSION
             override fun validate(s: String): Pair<Boolean, String> = when {
-                "^[A-Z]{1}\\w*".toRegex().matches(s) -> true to ""
+                "^[A-Z]{1}.*".toRegex().matches(s) -> true to ""
                 else -> false to "Имя должно начинаться с заглавной буквы"
             }
         },
         PROFESSION("Назови мою профессию?", listOf("сгибальщик", "bender")) {
             override fun nextQuestion(): Question = MATERIAL
             override fun validate(s: String): Pair<Boolean, String> = when {
-                "^[a-z]{1}\\w*".toRegex().matches(s) -> true to ""
+                "^[a-z]{1}.*".toRegex().matches(s) -> true to ""
                 else -> false to "Профессия должна начинаться со строчной буквы"
             }
         },
