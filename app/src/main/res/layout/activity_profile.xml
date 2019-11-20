@@ -57,7 +57,7 @@
                 android:src="@drawable/ic_edit_black_24dp" />
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_nick_name"
                 style="@style/Profile.Header.Nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                 style="@style/Profile.Header.Rank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_name"
+                android:layout_below="@id/tv_nick_name"
                 android:layout_centerHorizontal="true"
                 android:text="Junior Android Developer" />
         </RelativeLayout>
