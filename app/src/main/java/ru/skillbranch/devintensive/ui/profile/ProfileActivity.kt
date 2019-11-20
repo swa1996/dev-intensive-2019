@@ -66,7 +66,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun initViews(savedInstanceState: Bundle?) {
 
         viewFields = mapOf(
-            "nickname" to tv_name,
+            "nickname" to tv_nick_name,
             "rank" to tv_rank,
             "firstName" to et_first_name,
             "lastName" to et_last_name,
