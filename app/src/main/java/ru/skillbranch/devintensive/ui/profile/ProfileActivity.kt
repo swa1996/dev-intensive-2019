@@ -132,6 +132,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun updateTheme(mode: Int) {
         //   AppCompatDelegate.setDefaultNightMode(mode)
+        val delegate = this.delegate
         delegate.localNightMode = mode
     }
 
