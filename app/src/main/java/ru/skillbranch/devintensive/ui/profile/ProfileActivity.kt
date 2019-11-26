@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -131,9 +132,9 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun updateTheme(mode: Int) {
-        //   AppCompatDelegate.setDefaultNightMode(mode)
-        val delegate = this.delegate
-        delegate.localNightMode = mode
+        AppCompatDelegate.setDefaultNightMode(mode)
+//        val delegate = this.delegate
+//        delegate.localNightMode = mode
     }
 
     private fun upDateUI(profile: Profile) {
