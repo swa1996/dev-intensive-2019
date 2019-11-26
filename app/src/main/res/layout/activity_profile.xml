@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ru.skillbranch.devintensive.ui.profile.custom.AspectRatioImageView
+        <ru.skillbranch.devintensive.ui.custom.AspectRatioImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:src="@drawable/ic_switch_day_night" />
 
 
-            <ru.skillbranch.devintensive.ui.profile.custom.CircleImageView
+            <ru.skillbranch.devintensive.ui.custom.CircleImageView
                 android:id="@+id/iv_avatar"
                 android:layout_width="@dimen/avatar_round_size"
                 android:layout_height="@dimen/avatar_round_size"

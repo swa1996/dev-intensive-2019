@@ -3,7 +3,7 @@ package ru.skillbranch.devintensive
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import ru.skillbranch.devintensive.extensions.*
-import ru.skillbranch.devintensive.models.User
+import ru.skillbranch.devintensive.models.data.User
 import java.util.*
 
 /**
